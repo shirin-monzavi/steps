@@ -1,8 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 
 export default function App() {
-  const step = 2;
+  const [step, setStep] = useState(1)
 
   const messages = [
     "Learn React ⚛️",
@@ -10,6 +11,17 @@ export default function App() {
     "Invest your new income 🤑",
   ];
 
+  function handlePrev() {
+    if (step > 1) {
+      setStep(step - 1)
+    }
+  }
+
+  function handleNext() {
+    if (step < 3) {
+      setStep(step + 1)
+    }
+  }
   return (
     <div className="steps">
       <div className="numbers">
@@ -19,10 +31,10 @@ export default function App() {
       </div>
       <p className="message">{messages[step - 1]}</p>
       <div className="buttons">
-        <button style={{ backgroundColor: "#7950f2", color: "white" }}>
+        <button style={{ backgroundColor: "#7950f2", color: "white" }} onClick={handlePrev}>
           Prev
         </button>
-        <button style={{ backgroundColor: "#7950f2", color: "white" }}>
+        <button style={{ backgroundColor: "#7950f2", color: "white" }} onClick={handleNext}>
           Next
         </button>
       </div>
